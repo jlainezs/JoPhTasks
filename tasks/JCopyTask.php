@@ -1,10 +1,6 @@
 <?php
 /**
- * @package     Phing-tasks\Joomla
- * @subpackage  JCopy
- * @author      Pep Lainez <contacte@econceptes.com>
- * @license     LGPL v3.0
- * @copyright   2016 Pep Lainez
+ * Phing tasks for Joomla Extension Development
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -17,8 +13,14 @@
  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
+ * @package    Phing-tasks\Joomla
+ * @subpackage JCopy
+ * @author     Pep Lainez <contacte@econceptes.com>
+ * @copyright  2016 Pep Lainez
+ * @license    LGPL v3.0
  */
+
 
 require_once "phing/Task.php";
 require_once 'phing/tasks/system/CopyTask.php';
@@ -64,31 +66,32 @@ abstract class JCopyTask extends Task
     /**
 	 * The init method: Do init steps.
 	 */
-	public function init()
-	{
-		// nothing to do here
-	}
+    public function init()
+    {
+        // nothing to do here
+    }
 
-	/**
-	 * Validates the attributes of the task
-	 *
-	 * @throws BuildException
-	 */
-	protected function validateAttributes()
-	{
-		if (empty($this->joomlaRoot)) {
-			throw new BuildException("Pls, set Joomla home.");
-		}
+    /**
+     * Validates the attributes of the task
+     *
+     * @throws BuildException
+     */
+    protected function validateAttributes()
+    {
+        if (empty($this->joomlaRoot)) {
+            throw new BuildException("Pls, set Joomla home.");
+        }
 
-		if (empty($this->srcPath)) {
-			throw new BuildException("Pls, set a source path to copy from.");
-		}
-	}
+        if (empty($this->srcPath)) {
+            throw new BuildException("Pls, set a source path to copy from.");
+        }
+    }
 
 
     /**
      * Used to force listing of all names of deleted files.
-     * @param boolean $verbosity
+     * 
+     * @param boolean $verbosity Verbosity level
      */
     public function setVerbose($verbosity)
     {
@@ -102,55 +105,62 @@ abstract class JCopyTask extends Task
     /**
      * If true of 1 de destinations folders will be removed before copying 
      * 
-     * @param  boolean  $mustClean
+     * @param boolean $mustClean If true, will clear content of destination directory
      */
     public function setPurge($mustClean)
     {
-        if ($mustClean){
+        if ($mustClean) {
             $this->mustPurge = true;
         } else {
             $this->mustPurge = false;
         }
     }
 
-	/**
-	 * Sets the Joomla directory
-	 * @param $str
-	 */
-    public function setJoomlaRoot($str){
-        if (mb_substr($str,mb_strlen($str)-1,1) == '/')
-        {
-            $str = mb_substr($str,0, mb_strlen($str)-1);
+    /**
+     * Sets the Joomla directory
+     * 
+     * @param string $str Joomla home directory
+     * 
+     */
+    public function setJoomlaRoot($str)
+    {
+        if (mb_substr($str, mb_strlen($str)-1, 1) == '/') {
+            $str = mb_substr($str, 0, mb_strlen($str)-1);
         }
+        
         $this->joomlaRoot = $str;
     }
 
-	/**
-	 * Sets the source path
-	 * @param $str
-	 */
-    public function setSourcePath($str){
+    /**
+     * Sets the source path
+     * 
+     * @param string $str Sets the source path of the extension
+     */
+    public function setSourcePath($str)
+    {
         $this->srcPath = $str;
-        $parts = explode('/',$str);
-
+        $parts = explode('/', $str);
+        
         if (count($parts)) {
             $this->extensionName = $parts[count($parts) - 1];
         }
     }
 
-	/**
-	 * Gets the Joomla admininstrator path
-	 * @return string
-	 */
+    /**
+     * Gets the Joomla administrator path
+     * 
+     * @return string
+     */
     protected function getJAdminPath()
     {
         return $this->getJHomePath() . '/administrator';
     }
 
-	/**
-	 * Gets the Joomla administrator components path
-	 * @return string
-	 */
+    /**
+     * Gets the Joomla administrator components path
+     * 
+     * @return string
+     */
     protected function getJAdminComponentsPath()
     {
         return $this->getJAdminPath() . '/components';
@@ -214,10 +224,10 @@ abstract class JCopyTask extends Task
      *
      * @return string
      */
-	public function getJSiteModulesPath()
+    public function getJSiteModulesPath()
     {
-		return $this->getJHomePath() . '/modules';
-	}
+        return $this->getJHomePath() . '/modules';
+    }
 
     /**
      * Gets the modules folder on the administrator
@@ -234,10 +244,10 @@ abstract class JCopyTask extends Task
      *
      * @return string
      */
-	public function getJSitePluginsDir()
+    public function getJSitePluginsDir()
     {
-		return $this->getJHomePath() . '/plugins';
-	}
+        return $this->getJHomePath() . '/plugins';
+    }
 
     /**
      * Gets the templates folder
@@ -262,15 +272,16 @@ abstract class JCopyTask extends Task
     /**
      * Executes a copy task
      *
-     * @param  String  $from      Origin
-     * @param  String  $to        Destination of the copy
-     * @param  String  $includes  Include files expression
-     * @param  string  $excludes  Exclude files expression
+     * @param string $from     Origin
+     * @param string $to       Destination of the copy
+     * @param string $includes Include files expression
+     * @param string $excludes Exclude files expression
      *
-     * @throws  BuildException
-     * @throws  Exception
+     * @throws BuildException
+     * @throws Exception
      */
-    protected function copy($from, $to, $includes, $excludes = ''){
+    protected function copy($from, $to, $includes, $excludes = '')
+    {
 
         $fromPF = new PhingFile($from);
         $toPF = new PhingFile($to);
@@ -285,15 +296,17 @@ abstract class JCopyTask extends Task
         $cp = new CopyTask();
         $cp->setProject($this->getProject());
         $cp->setTodir($toPF);
-        $cp->setOverwrite(TRUE);
+        $cp->setOverwrite(true);
         $cp->addFileSet($fs);
         $cp->main();
     }
 
     /**
      * Deletes the given directory
-     * 
-     * @param  string  $fso
+     *
+     * @param string $fso Directory to purge
+     * @param string $includes What to purge
+     * @param string $excludes What to exclude from purge
      */
     protected function purge($fso, $includes = '*/**', $excludes = '')
     {

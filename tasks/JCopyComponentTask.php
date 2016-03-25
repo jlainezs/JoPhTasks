@@ -1,10 +1,6 @@
 <?php
 /**
- * @package     Phing-tasks\Joomla
- * @subpackage  JCopy
- * @author      Pep Lainez <contacte@econceptes.com>
- * @license     LGPL v3.0
- * @copyright   2016 Pep Lainez
+ * Phing tasks for Joomla Extension Development
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -17,8 +13,14 @@
  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
+ * 
+ * @package    Phing-tasks\Joomla
+ * @subpackage JCopy
+ * @author     Pep Lainez <contacte@econceptes.com>
+ * @copyright  2016 Pep Lainez
+ * @license    LGPL v3.0
  */
+
 require_once 'JCopyTask.php';
 
 /**
@@ -54,11 +56,23 @@ require_once 'JCopyTask.php';
  */
 class JCopyComponentTask extends JCopyTask
 {
-    protected function getJAdminComponentPath(){
+    /**
+     * Gets the component folder on administrator
+     * 
+     * @return string
+     */
+    protected function getJAdminComponentPath()
+    {
         return $this->getJAdminComponentsPath() . '/' . $this->extensionName;
     }
 
-    protected function getJSiteComponentPath(){
+    /**
+     * Gets the component folder on the site
+     * 
+     * @return string
+     */
+    protected function getJSiteComponentPath()
+    {
         return $this->getJSiteComponentsPath() . '/' . $this->extensionName;
     }
 
@@ -72,7 +86,7 @@ class JCopyComponentTask extends JCopyTask
         // administrator
         $this->copy($this->srcPath . '/administrator', $this->getJAdminComponentPath(), '*/**', 'languages/**');
 
-        if(file_exists($this->srcPath . '/administrator/languages')) {
+        if (file_exists($this->srcPath . '/administrator/languages')) {
             $this->copy($this->srcPath . '/administrator/languages', $this->getJAdminLanguagePath(), '*/**');
         }
 
@@ -87,7 +101,6 @@ class JCopyComponentTask extends JCopyTask
         if (file_exists($this->srcPath . '/media')) {
             $this->copy($this->srcPath . '/media', $this->getJSiteMediaPath(), '*/**');
         }
-
     }
 
 }

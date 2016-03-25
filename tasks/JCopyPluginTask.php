@@ -1,10 +1,6 @@
 <?php
 /**
- * @package     Phing-tasks\Joomla
- * @subpackage  JCopy
- * @author      Pep Lainez <contacte@econceptes.com>
- * @license     LGPL v3.0
- * @copyright   2016 Pep Lainez
+ * Phing tasks for Joomla Extension Development
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -18,7 +14,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * @package    Phing-tasks\Joomla
+ * @subpackage JCopy
+ * @author     Pep Lainez <contacte@econceptes.com>
+ * @copyright  2016 Pep Lainez
+ * @license    LGPL v3.0
  */
+
 require_once 'JCopyTask.php';
 
 /**
@@ -47,7 +49,8 @@ class JCopyPluginTask extends JCopyTask
      * Sets the plugin type
      * @param String $str Type of the plugin
      */
-    public function setPluginType($str){
+    public function setPluginType($str)
+    {
         $this->pluginType = $str;
     }
 
@@ -64,10 +67,17 @@ class JCopyPluginTask extends JCopyTask
         }
     }
 
-    protected function getPluginAndGroupPath(){
-        $aSrc = explode('/',$this->srcPath);
+    /**
+     * Gets the plugin path inside plugins dir by using the source path
+     * 
+     * @return string
+     * @throws exception
+     */
+    protected function getPluginAndGroupPath()
+    {
+        $aSrc = explode('/', $this->srcPath);
 
-        if (count($aSrc) > 2){
+        if (count($aSrc) > 2) {
             return $aSrc[count($aSrc)-2] . '/' . $aSrc[count($aSrc)-1];
         }
 
@@ -82,7 +92,7 @@ class JCopyPluginTask extends JCopyTask
         $this->validateAttributes();
         $targetDir = $this->getJSitePluginsDir() . '/' . $this->getPluginAndGroupPath();
         
-        if ($this->mustPurge){
+        if ($this->mustPurge) {
             $this->purge($targetDir);
         }
         
@@ -93,9 +103,9 @@ class JCopyPluginTask extends JCopyTask
         }
 
         if (file_exists($this->srcPath . '/media')) {
-            $this->extensionName = 'plg_' . str_replace('/','_', $this->getPluginAndGroupPath());
+            $this->extensionName = 'plg_' . str_replace('/', '_', $this->getPluginAndGroupPath());
             
-            if ($this->mustPurge){
+            if ($this->mustPurge) {
                 $this->purge($this->getJSiteMediaPath());    
             }
             

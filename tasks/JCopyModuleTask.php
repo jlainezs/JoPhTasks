@@ -1,10 +1,6 @@
 <?php
 /**
- * @package     Phing-tasks\Joomla
- * @subpackage  JCopy
- * @author      Pep Lainez <contacte@econceptes.com>
- * @license     LGPL v3.0
- * @copyright   2016 Pep Lainez
+ * Phing tasks for Joomla Extension Development
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -18,7 +14,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * @package    Phing-tasks\Joomla
+ * @subpackage JCopy
+ * @author     Pep Lainez <contacte@econceptes.com>
+ * @copyright  2016 Pep Lainez
+ * @license    LGPL v3.0
  */
+
 require_once 'JCopyWithAdminTask.php';
 
 /**
@@ -39,13 +41,14 @@ require_once 'JCopyWithAdminTask.php';
  *      ...whatever files you need
  */
 class JCopyModuleTask extends JCopyWithAdminTask
-{    
+{
     /**
      * Gets the path of extension being processed on the Joomla directory
      *
      * @return string
      */
-    public function getJModulePath(){
+    public function getJModulePath()
+    {
         return  ($this->toAdmin ? $this->getJAdminModulesPath() : $this->getJSiteModulesPath()) . '/' . $this->extensionName;
     }
     
