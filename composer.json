@@ -1,0 +1,20 @@
+{
+  "name": "econceptes/joomla-phing-tasks",
+  "description": "Phing tasks to help with Joomla! extensions development",
+  "keywords": ["phing","joomla"],
+  "homepage": "http://www.econceptes.com",
+  "minimum-stability": "stable",
+  "license": "LGPL 3.0",
+  "authors": [
+    {
+      "name": "Pep Lainez",
+      "email": "contacte@econceptes.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "support": {
+      "email" : "contacte@econceptes.com"
+  }
+}

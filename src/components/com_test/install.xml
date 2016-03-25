@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="3.1" method="upgrade">
+    <name>com_jodk</name>
+    <creationDate>March 2016</creationDate>
+    <author>EConceptes</author>
+    <authorEmail>contacte@econceptes.com</authorEmail>
+    <authorUrl>http://www.econceptes.com</authorUrl>
+    <copyright>Copyright 2916, EConceptes</copyright>
+    <license>GNU/GPL v3</license>
+    <version>1.0.0</version>
+    <description>COM_JODK_XML_DESC</description>
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    <files folder="site">
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+        <filename>controller.php</filename>
+        <filename>index.html</filename>
+        <filename>test.php</filename>
+    </files>
+
+    <languages folder="site/languages">
+        <language tag="en-GB">en-GB/en-GB.com_jodk.ini</language>
+    </languages>
+
+    <media folder="media" destination="com_jodk">
+        <folder>css</folder>
+        <folder>javascript</folder>
+        <folder>images</folder>
+        <filename>index.html</filename>
+    </media>
+
+    <administration>
+        <menu>COM_JODK_MENU_LABEL</menu>
+        <files folder="administrator">
+            <folder>classes</folder>
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>jodk.php</filename>
+        </files>
+        <languages folder="administrator/languages">
+            <language tag="en-GB">en-GB/en-GB.com_jodk.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_jodk.sys.ini</language>
+        </languages>
+    </administration>
+</extension>

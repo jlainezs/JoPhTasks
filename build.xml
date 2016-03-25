@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<!--
+	Phing buildfile per al projecte.
+-->
+<project name="PhingJoomlaTasks" basedir="." default="CopyTest">
+    <includepath classpath="joomla-phing-tasks" />
+    <taskdef name="jcopycomponent" classname="JCopyComponentTask" />
+    <taskdef name="jcopyplugin" classname="JCopyPluginTask" />
+    <taskdef name="jcopymodule" classname="JCopyModuleTask" />
+    <taskdef name="jcopytemplate" classname="JCopyTemplateTask" />
+    <!--
+        ===========================================
+            propietats globals
+               les propietats *.dir es refereixen
+               a paths. i inclouen el darrer /
+        ===========================================
+    -->
+
+    <!-- Directori on es deixa el fitxer zip -->
+    <property name="release.dir" value="release/"/>
+
+    <!-- Directori on està instal·lat el Joomla! de test -->
+    <property name="site.dir" value = "www/" />
+
+    <!--
+        ===========================================
+            targets
+        ===========================================
+    -->
+
+    <!--
+        Còpies
+    -->
+    <target name="cleanTest">
+        <delete dir="www/administrator/components/com_test">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/components/com_test">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/media">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/administrator/language">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/language">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/modules/mod_test">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/administrator/modules/mod_test">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/administrator/templates/tsttemplate">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/templates/tsttemplate">
+            <fileset includes="*/**"/>
+        </delete>
+        <delete dir="www/plugins/content/testplugin">
+            <fileset includes="*/**"/>
+        </delete>
+    </target>
+
+    <target name="CopyComponents">
+        <jcopycomponent joomlaroot="${site.dir}" SourcePath="src/components/com_test" />
+    </target>
+
+    <target name="CopyModules">
+        <jcopymodule joomlaroot="${site.dir}" SourcePath="src/modules/mod_test"
+                     toAdmin="false" purge="false" />
+        <jcopymodule joomlaroot="${site.dir}" SourcePath="src/modules/mod_test"
+                     toAdmin="true" purge="false" />
+    </target>
+
+    <target name="CopyPlugins">
+        <jcopyplugin joomlaroot="${site.dir}" pluginType="content" SourcePath="src/plugins/content/testplugin" purge="true" />
+    </target>
+
+    <target name="CopyTemplates">
+        <jcopytemplate joomlaroot="${site.dir}" SourcePath="src/templates/tsttemplate" purge="true" />
+        <jcopytemplate joomlaroot="${site.dir}" SourcePath="src/templates/tsttemplate" toAdmin="true" purge="true" />
+    </target>
+
+    <target name="copyall" depends="cleanTest,CopyComponents,CopyModules,CopyPlugins,CopyTemplates" />
+
+    <!--
+        Instal·ladors
+    -->
+    <target name="release">
+        <zip destfile="${release.dir}com_jodk-1.0.0.zip">
+            <fileset dir="src/components/com_jodk" includes="*/**" />
+        </zip>
+
+        <zip destfile="${release.dir}plg_auth_aggregate-1.0.0.zip">
+            <fileset dir="src/plugins/authentication/odkaggregate" includes="*/**" />
+        </zip>
+    </target>
+</project>

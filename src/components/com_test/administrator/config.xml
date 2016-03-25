@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <fieldset name="options" label="COM_JODK_OPTIONS_LABEL">
+		<field name="accesstoken" type="text"
+			   default=""
+			   label="COM_JODK_ACCESSTOKEN_LABEL"
+			   description="COM_JODK_ACCESSTOKEN_DESC" />
+		<field name="aggregateserver" type="text"
+			   default=""
+			   class="input-xxlarge"
+			   label="COM_JODK_AGGREGATESERVERURL_LABEL"
+			   description="COM_JODK_AGGREGATESERVERURL_DESC" />
+	</fieldset>
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+		<field name="rules" type="rules"
+			   label="JCONFIG_PERMISSIONS_LABEL"
+			   class="inputbox" validate="rules" filter="rules" component="com_jodk" section="component" />
+	</fieldset>
+</config>
