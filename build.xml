@@ -4,7 +4,7 @@
 	Phing buildfile per al projecte.
 -->
 <project name="PhingJoomlaTasks" basedir="." default="CopyTest">
-    <includepath classpath="joomla-phing-tasks" />
+    <includepath classpath="tasks" />
     <taskdef name="jcopycomponent" classname="JCopyComponentTask" />
     <taskdef name="jcopyplugin" classname="JCopyPluginTask" />
     <taskdef name="jcopymodule" classname="JCopyModuleTask" />
