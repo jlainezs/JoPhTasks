@@ -1,3 +1,3 @@
-# Joomla sample site #
+# Sample site #
 
-This is a sample joomla site structure. It only contains the needed destination folders where files will be copied. 
+This directory simulates your development site. It is just for testing the tasks.  
