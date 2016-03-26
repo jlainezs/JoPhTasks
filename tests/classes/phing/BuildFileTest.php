@@ -16,7 +16,7 @@
  * and is licensed under the LGPL. For more information please see
  *
  * @author  Phing Official
- * @license LGPLG v3
+ * @license LGPL v3
  * @link    http://phing.info
  * @see     https://github.com/phingofficial/phing/blob/master/test/classes/phing/BuildFileTest.php
  */
@@ -45,14 +45,16 @@ abstract class BuildFileTest extends PHPUnit_Framework_TestCase
      * @var array Array of log BuildEvent objects.
      */
     public $logBuffer = array();
+    
     private $outBuffer;
     private $errBuffer;
     private $buildException;
     /**
      * Asserts that the log buffer contains specified message at specified priority.
+     * 
      * @param string $expected Message subsctring
      * @param int    $priority Message priority (default: any)
-     * @param string $errmsg   The error message to display.
+     * @param string $errormsg The error message to display.
      */
     protected function assertInLogs($expected, $priority = null, $errormsg = "Expected to find '%s' in logs: %s")
     {
@@ -66,9 +68,10 @@ abstract class BuildFileTest extends PHPUnit_Framework_TestCase
     }
     /**
      * Asserts that the log buffer does NOT contain specified message at specified priority.
-     * @param string $expected Message subsctring
+     * 
+     * @param string $message  Message substring
      * @param int    $priority Message priority (default: any)
-     * @param string $errmsg   The error message to display.
+     * @param string $errormsg The error message to display.
      */
     protected function assertNotInLogs(
         $message,

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+copied from https://github.com/phingofficial/phing/blob/master/test/phpunit-sparse.xml
+-->
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          colors="false"

@@ -19,6 +19,7 @@
  * @author     Pep Lainez <contacte@econceptes.com>
  * @copyright  2016 Pep Lainez
  * @license    LGPL v3.0
+ * @see        https://github.com/phingofficial/phing/blob/master/test/bootstrap.php
  */
 
 defined('PHING_TEST_BASE') || define('PHING_TEST_BASE', dirname(__FILE__));
