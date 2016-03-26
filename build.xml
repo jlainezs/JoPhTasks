@@ -1,37 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
 <!--
-	Phing buildfile per al projecte.
+	Phing buildfile
 -->
 <project name="PhingJoomlaTasks" basedir="." default="CopyTest">
+    <!-- define the custom tasks -->
     <includepath classpath="tasks" />
     <taskdef name="jcopycomponent" classname="JCopyComponentTask" />
     <taskdef name="jcopyplugin" classname="JCopyPluginTask" />
     <taskdef name="jcopymodule" classname="JCopyModuleTask" />
     <taskdef name="jcopytemplate" classname="JCopyTemplateTask" />
+
     <!--
-        ===========================================
-            propietats globals
-               les propietats *.dir es refereixen
-               a paths. i inclouen el darrer /
-        ===========================================
+            global properties
     -->
 
-    <!-- Directori on es deixa el fitxer zip -->
-    <property name="release.dir" value="release/"/>
-
-    <!-- Directori on està instal·lat el Joomla! de test -->
+    <!-- Points to joomla root. Pls. note the ending / -->
     <property name="site.dir" value = "www/" />
 
-    <!--
-        ===========================================
-            targets
-        ===========================================
-    -->
-
-    <!--
-        Còpies
-    -->
+    <!-- from time to time a clean of the test directory is needed -->
     <target name="cleanTest">
         <delete dir="www/administrator/components/com_test">
             <fileset includes="*/**"/>
@@ -65,6 +52,9 @@
         </delete>
     </target>
 
+    <!--
+        Copy extensions
+    -->
     <target name="CopyComponents">
         <jcopycomponent joomlaroot="${site.dir}" SourcePath="src/components/com_test" />
     </target>
@@ -86,17 +76,4 @@
     </target>
 
     <target name="copyall" depends="cleanTest,CopyComponents,CopyModules,CopyPlugins,CopyTemplates" />
-
-    <!--
-        Instal·ladors
-    -->
-    <target name="release">
-        <zip destfile="${release.dir}com_jodk-1.0.0.zip">
-            <fileset dir="src/components/com_jodk" includes="*/**" />
-        </zip>
-
-        <zip destfile="${release.dir}plg_auth_aggregate-1.0.0.zip">
-            <fileset dir="src/plugins/authentication/odkaggregate" includes="*/**" />
-        </zip>
-    </target>
 </project>
