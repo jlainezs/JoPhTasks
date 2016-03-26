@@ -16,7 +16,7 @@
          >
     <testsuites>
         <testsuite name="AllTests">
-            <directory>classes/phing/</directory>
+            <directory>tasks/</directory>
         </testsuite>
     </testsuites>
     <groups>
