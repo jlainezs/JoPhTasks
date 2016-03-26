@@ -25,11 +25,19 @@
  * Class CopyModuleTest
  *
  * Tests module copy task
+ *
+ * @package    Phing-tasks\Joomla
+ * @subpackage Tests\JCopy
+ * @author     Pep Lainez <contacte@econceptes.com>
+ * @copyright  2016 Pep Lainez
+ * @license    LGPL v3.0
  */
 class CopyModuleTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Test message
+     *
+     * @return void
      */
     public function testHelloWorld()
     {
