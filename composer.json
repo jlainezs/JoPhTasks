@@ -12,7 +12,8 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0"
+    "php": ">=5.3.0",
+    "phing/phing": "2.14.0"
   },
   "support": {
       "email" : "contacte@econceptes.com"

@@ -2,8 +2,10 @@
 .idea/
 3rd-party/
 release/
+vendor/
 www/*/*
 ## File-based project format:
 *.ipr
 *.iws
+composer.lock
 
