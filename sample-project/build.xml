@@ -5,7 +5,7 @@
 -->
 <project name="PhingJoomlaTasks" basedir="." default="CopyTest">
     <!-- define the custom tasks -->
-    <includepath classpath="tasks" />
+    <includepath classpath="../tasks" />
     <taskdef name="jcopycomponent" classname="JCopyComponentTask" />
     <taskdef name="jcopyplugin" classname="JCopyPluginTask" />
     <taskdef name="jcopymodule" classname="JCopyModuleTask" />

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CopyModuleTaskTest" default="main">
+
+    <!-- where the source code resides -->
+    <property name="origin.dir" value="../../sample-project/src/"/>
+
+    <!-- simulated joomla installation path -->
+    <property name="site.dir" value="../../sample-project/www/"/>
+    <property name="admin.dir" value="${site.dir}/administrator/"/>
+
+    <!-- joomla administrator relevant folders -->
+    <property name="admin.components.dir" value="${admin.dir}/components/"/>
+    <property name="admin.language.dir" value="${admin.dir}/language/"/>
+    <property name="admin.modules.dir" value="${admin.dir}/modules/"/>
+    <property name="admin.templates.dir" value="${admin.dir}/templates/"/>
+
+    <!-- joomla site relevant folders -->
+    <property name="site.components.dir" value="${site.dir}/components/"/>
+    <property name="site.language.dir" value="${site.dir}/language/"/>
+    <property name="site.modules.dir" value="${site.dir}/modules/"/>
+    <property name="site.templates.dir" value="${site.dir}/templates/"/>
+    <property name="site.plugins.dir" value="${site.dir}/plugins/"/>
+    <property name="media.dir" value="${site.dir}/media/"/>
+
+    <target name="setup"/>
+
+    <target name="clean" description="Cleans the destination folders">
+        <delete dir="${admin.components.dir}com_test">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${admin.modules.dir}mod_test">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${admin.templates.dir}tsttemplate">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${admin.language.dir}">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${site.components.dir}com_test">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${site.modules.dir}mod_test">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${site.templates.dir}tsttemplate">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${site.language.dir}">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${site.plugins.dir}">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${media.dir}">
+            <fileset includes="*/**" />
+        </delete>
+    </target>
+
+    <target name="testCopyModuleToSite">
+    </target>
+
+    <target name="testCopyModuleToAdministrator">
+    </target>
+
+    <target name="main"/>
+</project>
