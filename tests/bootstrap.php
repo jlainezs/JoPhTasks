@@ -31,6 +31,7 @@ set_include_path(
 );
 require_once dirname(__FILE__) . '/classes/phing/BuildFileTest.php';
 require_once 'phing/Phing.php';
+require_once 'tasks/BaseExtensionTask.php';
 
 // Use composers autoload.php if available
 if (file_exists(dirname(__FILE__) . '/../vendor/autoload.php')) {

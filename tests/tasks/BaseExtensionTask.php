@@ -22,9 +22,7 @@
  */
 
 /**
- * Class CopyModuleTest
- *
- * Tests module copy task
+ * Basic class for testing extensions handling
  *
  * @package    Phing-tasks\Joomla
  * @subpackage Tests\JCopy
@@ -32,8 +30,7 @@
  * @copyright  2016 Pep Lainez
  * @license    LGPL v3.0
  */
-
-class CopyModuleTest extends BaseExtensionTask
+class BaseExtensionTask extends BuildFileTest
 {
     /**
      * Prepare the test
@@ -42,34 +39,43 @@ class CopyModuleTest extends BaseExtensionTask
      */
     public function setUp()
     {
-        $this->configureProject(PHING_TEST_BASE . "/etc/tasks/CopyModuleTaskTest.xml");
-        parent::setUp();
-    }
-    
-    /**
-     * Test the module site copy
-     *
-     * @return void
-     */
-    public function testCopyModuleToSite()
-    {
-        $this->executeTarget(__FUNCTION__);
-        $this->assertInLogs("Created 2 empty directories");
-        $this->assertInLogs("Copying 3 files to");
-        $this->assertInLogs("Created 3 empty directories in");
-        $this->assertInLogs("Copying 4 files to");
-        $this->assertInLogs("Copying 4 files to");
+        $this->executeTarget("clean");
+        $this->executeTarget("setup");
     }
 
     /**
-     * Test the module administrator copy
+     * Test end
      *
      * @return void
      */
-    public function testCopyModuleToAdministrator()
+    public function tearDown()
     {
-        $this->executeTarget(__FUNCTION__);
-        $this->assertInLogs("Created 2 empty directories");
-        $this->assertInLogs("Copying 3 files to");
+        $this->executeTarget("clean");
     }
+
+    /*
+    public function testCopyDanglingSymlink()
+    {
+        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
+            $this->markTestSkipped("Dangling symlinks don't work on Windows");
+        }
+        $this->executeTarget("testCopyDanglingSymlink");
+        $this->assertInLogs("Copying 1 file to");
+    }
+
+    /**
+     * Test for {@link http://www.phing.info/trac/ticket/981}
+     * FileUtil::copyFile(): preserveLastModified causes
+     * empty symlink target file
+     *
+    public function testCopySymlinkPreserveLastModifiedShouldCopyTarget()
+    {
+        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
+            $this->markTestSkipped("Bug not applicable on Window");
+        }
+        $this->executeTarget(__FUNCTION__);
+        $this->assertInLogs("Copying 2 files to");
+        $this->assertGreaterThan(0, $this->project->getProperty('test.filesize'));
+    }
+    */
 }
