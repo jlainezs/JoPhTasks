@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CopyModuleTaskTest" default="main">
+    <target name="setup"/>
+
+    <target name="clean">
+    </target>
+
+    <target name="testCopyModuleToSite">
+    </target>
+
+    <target name="testCopyModuleToAdministrator">
+    </target>
+
+    <target name="main"/>
+</project>
