@@ -53,7 +53,7 @@ abstract class JCopyWithAdminTask extends JCopyTask
      */
     public function getJLanguagePath()
     {
-        return ($this->toAdmin ? $this->getJAdminLanguagePath() : $this->getJSiteLanguagePath());
+        return $this->toAdmin ? $this->getJAdminLanguagePath() : $this->getJSiteLanguagePath();
     }
     
 }

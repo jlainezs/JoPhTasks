@@ -14,8 +14,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package    Phing-tasks\Joomla
- * @subpackage Tests\JCopy
+ * @package    Phing-tasks/Joomla
+ * @subpackage Tests/JCopy
  * @author     Pep Lainez <contacte@econceptes.com>
  * @copyright  2016 Pep Lainez
  * @license    LGPL v3.0
@@ -26,13 +26,12 @@
  *
  * Tests module copy task
  *
- * @package    Phing-tasks\Joomla
- * @subpackage Tests\JCopy
+ * @package    Phing-tasks/Joomla
+ * @subpackage Tests/JCopy
  * @author     Pep Lainez <contacte@econceptes.com>
  * @copyright  2016 Pep Lainez
  * @license    LGPL v3.0
  */
-
 class CopyModuleTest extends BaseExtensionTask
 {
     /**
@@ -59,6 +58,15 @@ class CopyModuleTest extends BaseExtensionTask
         $this->assertInLogs("Created 3 empty directories in");
         $this->assertInLogs("Copying 4 files to");
         $this->assertInLogs("Copying 4 files to");
+        $modulePath = $this->getSampleWwwPath() . '/modules/mod_test';
+        $languagePath = $this->getSampleWwwPath() . '/language/ca-ES';
+        // Does the module dir exists?
+        $this->assertTrue(is_dir($modulePath));
+        // Does the main module file exists?
+        $this->assertFileExists($modulePath . '/mod_test.php');
+        $this->assertFileExists($modulePath . '/mod_test.xml');
+        // Does language files exists?
+        $this->assertFileExists($languagePath . '/ca-ES.mod_test.sys.ini');
     }
 
     /**
@@ -71,5 +79,17 @@ class CopyModuleTest extends BaseExtensionTask
         $this->executeTarget(__FUNCTION__);
         $this->assertInLogs("Created 2 empty directories");
         $this->assertInLogs("Copying 3 files to");
+        $this->assertInLogs("Created 3 empty directories in");
+        $this->assertInLogs("Copying 4 files to");
+        $this->assertInLogs("Copying 4 files to");
+        $modulePath = $this->getSampleAdminPath() . '/modules/mod_test';
+        $languagePath = $this->getSampleAdminPath() . '/language/ca-ES';
+        // Does the module dir exists?
+        $this->assertTrue(is_dir($modulePath));
+        // Does the main module file exists?
+        $this->assertFileExists($modulePath . '/mod_test.php');
+        $this->assertFileExists($modulePath . '/mod_test.xml');
+        // Does language files exists?
+        $this->assertFileExists($languagePath . '/ca-ES.mod_test.sys.ini');
     }
 }

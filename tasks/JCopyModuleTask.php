@@ -60,10 +60,8 @@ class JCopyModuleTask extends JCopyWithAdminTask
         parent::main();
         $this->copy($this->srcPath, $this->getJModulePath(), '*/**', 'languages/**,media/**');
         
-        if (!$this->toAdmin) {
-            if (file_exists($this->srcPath . '/languages')) {
-                $this->copy($this->srcPath . '/languages', $this->getJLanguagePath(), '*/**');
-            }
+        if (file_exists($this->srcPath . '/languages')) {
+            $this->copy($this->srcPath . '/languages', $this->getJLanguagePath(), '*/**');
         }
 
         if (file_exists($this->srcPath . '/media')) {

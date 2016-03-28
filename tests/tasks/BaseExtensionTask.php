@@ -39,7 +39,7 @@ class BaseExtensionTask extends BuildFileTest
      */
     public function setUp()
     {
-        $this->executeTarget("clean");
+        $this->executeTarget("clean");  // enforce sample test site to be clean
         $this->executeTarget("setup");
     }
 
@@ -53,29 +53,46 @@ class BaseExtensionTask extends BuildFileTest
         $this->executeTarget("clean");
     }
 
-    /*
-    public function testCopyDanglingSymlink()
+    /**
+     * Gets the sample site directory
+     * 
+     * @return string Path to the sample site dir
+     */
+    public function getSampleWwwPath()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
-            $this->markTestSkipped("Dangling symlinks don't work on Windows");
-        }
-        $this->executeTarget("testCopyDanglingSymlink");
-        $this->assertInLogs("Copying 1 file to");
+        return realpath($this->project->getProperty('site.dir'));
     }
 
     /**
-     * Test for {@link http://www.phing.info/trac/ticket/981}
-     * FileUtil::copyFile(): preserveLastModified causes
-     * empty symlink target file
+     * Gets the sample administrator directory
      *
-    public function testCopySymlinkPreserveLastModifiedShouldCopyTarget()
+     * @return string Path to the sample administrator dir
+     */
+    public function getSampleAdminPath()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
-            $this->markTestSkipped("Bug not applicable on Window");
-        }
-        $this->executeTarget(__FUNCTION__);
-        $this->assertInLogs("Copying 2 files to");
-        $this->assertGreaterThan(0, $this->project->getProperty('test.filesize'));
+        return realpath($this->project->getProperty('admin.dir'));
     }
-    */
+
+    /**
+     * Gets the sample site media directory
+     *
+     * @return string
+     */
+    public function getSampleMediaPath()
+    {
+        return realpath($this->project->getProperty('media.dir'));
+    }
+
+    /**
+     * Returns a standard message for file not found tests
+     * 
+     * @param string $path path of the file not found
+     * 
+     * @return string
+     */
+    public function fileNotFoundMessage($path)
+    {
+        return sprintf("File %s not found", $path);
+    }
+
 }
