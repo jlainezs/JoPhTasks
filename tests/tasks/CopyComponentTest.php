@@ -48,6 +48,8 @@ class CopyComponentTest extends BaseExtensionTask
     /**
      * Test the module site copy
      *
+     * @covers JCopyComponentTask::main
+     *
      * @return void
      */
     public function testCopyComponent()

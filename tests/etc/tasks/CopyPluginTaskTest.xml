@@ -22,5 +22,16 @@
                      SourcePath="${origin.dir}/plugins/content/testplugin" />
     </target>
 
+    <target name="testCopyPluginNoPluginTypeException">
+        <jcopyplugin joomlaroot="${site.dir}"
+                     SourcePath="${origin.dir}/plugins/content/testplugin" />
+    </target>
+
+    <target name="testCopyPluginNoPluginGroupException">
+        <jcopyplugin joomlaroot="${site.dir}"
+                     pluginType="content"
+                     SourcePath="${origin.dir}/plugins/testplugin" />
+    </target>
+
     <target name="main"/>
 </project>

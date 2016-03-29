@@ -48,6 +48,8 @@ class CopyTemplateTest extends BaseExtensionTask
     /**
      * Test the template site copy
      *
+     * @covers JCopyTemplateTask::main
+     *
      * @return void
      */
     public function testCopyTemplateToSite()
@@ -71,6 +73,8 @@ class CopyTemplateTest extends BaseExtensionTask
 
     /**
      * Test the template administrator copy
+     *
+     * @covers JCopyTemplateTask::main
      *
      * @return void
      */

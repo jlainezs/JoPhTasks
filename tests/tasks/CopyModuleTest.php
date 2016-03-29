@@ -47,6 +47,8 @@ class CopyModuleTest extends BaseExtensionTask
     
     /**
      * Test the module site copy
+     * 
+     * @covers JCopyModuleTask::main
      *
      * @return void
      */
@@ -71,6 +73,8 @@ class CopyModuleTest extends BaseExtensionTask
 
     /**
      * Test the module administrator copy
+     *
+     * @covers JCopyModuleTask::main 
      *
      * @return void
      */

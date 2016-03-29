@@ -47,6 +47,10 @@ class CopyPluginTest extends BaseExtensionTask
     
     /**
      * Test the plugin site copy
+     * 
+     * @covers JCopyPluginTask::main
+     * @covers JCopyTask::getJSitePluginsDir
+     * @covers JCopyPluginTask::getPluginAndGroupPath
      *
      * @return void
      */
@@ -69,5 +73,29 @@ class CopyPluginTest extends BaseExtensionTask
         // Does language files exists?
         $this->assertFileExists($languagePath . '/ca-ES.plg_content_testplugin.ini');
         $this->assertFileExists($languagePath . '/ca-ES.plg_content_testplugin.sys.ini');
+    }
+
+    /**
+     * Test that a no plugin exception is raised
+     *
+     * @covers            JCopyPluginTask::main
+     * @covers            JCopyPluginTask::validateAttributes
+     * @expectedException BuildException
+     */
+    public function testCopyPluginNoPluginTypeException()
+    {
+        $this->executeTarget(__FUNCTION__);
+    }
+    
+    /**
+     * Test that plugin src directory misses the group or the plugin name 
+     *
+     * @covers            JCopyPluginTask::main
+     * @covers            JCopyPluginTask::getPluginAndGroupPath
+     * @expectedException BuildException
+     */
+    public function testCopyPluginNoPluginGroupException()
+    {
+        $this->executeTarget(__FUNCTION__);
     }
 }
