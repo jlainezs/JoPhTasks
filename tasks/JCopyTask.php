@@ -21,31 +21,38 @@
  * @license    LGPL v3.0
  */
 
-
 require_once "phing/Task.php";
 require_once 'phing/tasks/system/CopyTask.php';
 
 /**
  * Class JCopyTask
- *
  * Base class for Joomla extensions copy tasks
+ * 
+ * @package    Phing-tasks\Joomla
+ * @subpackage JCopy
+ * @author     Pep Lainez <contacte@econceptes.com>
+ * @copyright  2016 Pep Lainez
+ * @license    LGPL v3.0
  */
 abstract class JCopyTask extends Task
 {
     /**
-     * Where Joomla is located 
+     * Where Joomla is located
+     * 
      * @var string
      */
     protected $joomlaRoot = null;
 
     /**
      * Where source files are
+     * 
      * @var string
      */
     protected $srcPath = null;
 
     /**
      * Extension name. It is guessed from the the directory structure
+     * 
      * @var string
      */
     protected $extensionName = null;
@@ -53,19 +60,23 @@ abstract class JCopyTask extends Task
     /**
      * If true (default) temoves target directories before copying.
      * This allows to clean the target directory.
+     * 
      * @var bool
      */
     protected $mustPurge = true;
 
     /**
      * Quotes extra information
+     * 
      * @var int
      */
     protected $verbosity = Project::MSG_VERBOSE;
 
     /**
-	 * The init method: Do init steps.
-	 */
+     * The init method: Do init steps.
+     *
+     * @return void 
+     */
     public function init()
     {
         // nothing to do here
@@ -73,6 +84,8 @@ abstract class JCopyTask extends Task
 
     /**
      * Validates the attributes of the task
+     *
+     * @return void 
      *
      * @throws BuildException
      */
@@ -92,6 +105,8 @@ abstract class JCopyTask extends Task
      * Used to force listing of all names of deleted files.
      * 
      * @param boolean $verbosity Verbosity level
+     *
+     * @return void 
      */
     public function setVerbose($verbosity)
     {
@@ -106,6 +121,8 @@ abstract class JCopyTask extends Task
      * If true of 1 de destinations folders will be removed before copying 
      * 
      * @param boolean $mustClean If true, will clear content of destination directory
+     *
+     * @return void 
      */
     public function setPurge($mustClean)
     {
@@ -120,7 +137,8 @@ abstract class JCopyTask extends Task
      * Sets the Joomla directory
      * 
      * @param string $str Joomla home directory
-     * 
+     *
+     * @return void 
      */
     public function setJoomlaRoot($str)
     {
@@ -135,6 +153,8 @@ abstract class JCopyTask extends Task
      * Sets the source path
      * 
      * @param string $str Sets the source path of the extension
+     *
+     * @return void 
      */
     public function setSourcePath($str)
     {
@@ -168,6 +188,7 @@ abstract class JCopyTask extends Task
 
     /**
      * Gets the Joomla administrator language path
+     * 
      * @return string
      */
     protected function getJAdminLanguagePath()
@@ -199,10 +220,9 @@ abstract class JCopyTask extends Task
      * Gets the Joomla site language path for the given tag.
      * If no tag is given it returns the path to the language folder.
      *
-     * @param  string $tag Language tag (i.e. en-GB)
+     * @param string $tag Language tag (i.e. en-GB)
      *
      * @return string
-     *
      */
     public function getJSiteLanguagePath($tag = null)
     {
@@ -277,6 +297,8 @@ abstract class JCopyTask extends Task
      * @param string $includes Include files expression
      * @param string $excludes Exclude files expression
      *
+     * @return void 
+     * 
      * @throws BuildException
      * @throws Exception
      */
@@ -304,9 +326,11 @@ abstract class JCopyTask extends Task
     /**
      * Deletes the given directory
      *
-     * @param string $fso Directory to purge
+     * @param string $fso      Directory to purge
      * @param string $includes What to purge
      * @param string $excludes What to exclude from purge
+     *
+     * @return void 
      */
     protected function purge($fso, $includes = '*/**', $excludes = '')
     {
@@ -325,12 +349,15 @@ abstract class JCopyTask extends Task
         $delete->main();
     }
 
-	/**
-	 * Task entry point. Executes attributes validation
-	 *
-	 * @throws BuildException
-	 */
-	public function main(){
-		$this->validateAttributes();
-	}
+    /**
+     * Task entry point. Executes attributes validation
+     *
+     * @return void 
+     * 
+     * @throws BuildException
+     */
+    public function main()
+    {
+        $this->validateAttributes();
+    }
 }

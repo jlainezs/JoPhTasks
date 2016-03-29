@@ -36,6 +36,8 @@ abstract class JCopyWithAdminTask extends JCopyTask
      * Sets if module should be copied to the administrator modules
      *
      * @param string $str 'true' or '1' to direct the operation to the administrator
+     *
+     * @return void 
      */
     public function setToAdmin($str)
     {

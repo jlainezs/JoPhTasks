@@ -78,6 +78,8 @@ class JCopyComponentTask extends JCopyTask
 
     /**
      * Executes the task
+     *
+     * @return void 
      */
     public function main()
     {

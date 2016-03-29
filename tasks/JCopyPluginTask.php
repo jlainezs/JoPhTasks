@@ -47,7 +47,10 @@ class JCopyPluginTask extends JCopyTask
 
     /**
      * Sets the plugin type
+     * 
      * @param String $str Type of the plugin
+     *
+     * @return void 
      */
     public function setPluginType($str)
     {
@@ -56,6 +59,8 @@ class JCopyPluginTask extends JCopyTask
 
     /**
      * Validates the attributes of the task
+     *
+     * @return void 
      *
      * @throws BuildException
      */
@@ -86,6 +91,8 @@ class JCopyPluginTask extends JCopyTask
 
     /**
      * Executes the task
+     *
+     * @return void 
      */
     public function main()
     {

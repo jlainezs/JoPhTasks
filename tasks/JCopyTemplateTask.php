@@ -52,6 +52,8 @@ class JCopyTemplateTask extends JCopyWithAdminTask
 
     /**
      * Executes the task
+     * 
+     * @return void
      */
     public function main()
     {
