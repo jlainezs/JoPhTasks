@@ -49,6 +49,10 @@ class CopyComponentTest extends BaseExtensionTask
      * Test the module site copy
      *
      * @covers JCopyComponentTask::main
+     * @covers JCopyComponentTask::getJAdminComponentPath
+     * @covers JCopyComponentTask::getJAdminComponentsPath
+     * @covers JCopyComponentTask::getJSiteComponentPath
+     * @covers JCopyComponentTask::getJSiteComponentsPath
      *
      * @return void
      */
