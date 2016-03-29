@@ -1,4 +1,4 @@
-# JoPh Tasks #
+# JoPh Tasks
 
 This is a set of phing tasks which helps me to develop Joomla! extensions by shortening the phing targets definition
 for copying an extension.
@@ -6,7 +6,7 @@ for copying an extension.
 By using those tasks it is possible to copy a component (including media and languages for front-end and backend)
 with only 1 line of code. This allows to have very simple phing build files which improves project maintanability.
 
-## Tasks ##
+## Tasks
 
 The tasks defined allows you to copy:
 
@@ -15,9 +15,11 @@ The tasks defined allows you to copy:
 * Plugins
 * Templates
 
-from your coding directory to the local Joomla installation you are using for development.
+from your coding directory to the local Joomla installation you are using for development. Of course, those tasks
+can help if you develop your extensions outside of the Joomla installation folders.
 
-## How to use it ##
+## How to use it
 
-Examine the ```build.xml``` file on the root to get an idea of how to use those tasks. Specially take a
-look to the ```<includepath>``` and ```<taskdef>``` tags which allows to 'plug' the custom tasks.
+The ```build.xml``` file on the ```simple-project``` directory is a good example to get an idea of how to use those tasks.
+The most important part is the ```<includepath>``` and ```<taskdef>``` tags which allows to 'plug' the custom tasks into Phing.
+Now, take a closer look to the targets defined in the project.
