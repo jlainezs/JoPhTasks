@@ -81,6 +81,8 @@ class CopyPluginTest extends BaseExtensionTask
      * @covers            JCopyPluginTask::main
      * @covers            JCopyPluginTask::validateAttributes
      * @expectedException BuildException
+     *
+     * @return void 
      */
     public function testCopyPluginNoPluginTypeException()
     {
@@ -93,6 +95,8 @@ class CopyPluginTest extends BaseExtensionTask
      * @covers            JCopyPluginTask::main
      * @covers            JCopyPluginTask::getPluginAndGroupPath
      * @expectedException BuildException
+     *
+     * @return void 
      */
     public function testCopyPluginNoPluginGroupException()
     {
