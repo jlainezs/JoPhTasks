@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CopyPluginTaskTest" default="main">
+    <includepath classpath="../../../tasks" />
+    <taskdef name="jcopyplugin" classname="JCopyPluginTask" />
+
+    <property file="tasks.properties"/>
+
+    <target name="setup"/>
+
+    <target name="clean" description="Cleans the destination folders">
+        <delete dir="${site.plugins.dir}">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${media.dir}">
+            <fileset includes="*/**" />
+        </delete>
+    </target>
+
+    <target name="testCopyPlugin">
+        <jcopyplugin joomlaroot="${site.dir}"
+                     pluginType="content"
+                     SourcePath="${origin.dir}/plugins/content/testplugin" />
+    </target>
+
+    <target name="main"/>
+</project>
