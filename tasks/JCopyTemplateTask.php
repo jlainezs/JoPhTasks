@@ -66,7 +66,7 @@ class JCopyTemplateTask extends JCopyWithAdminTask
         $this->copy($this->srcPath, $targetDir, '*/**', $exclude);
 
         if (file_exists($this->srcPath . '/languages')) {
-            $this->copy($this->srcPath . '/languages', $this->getJLanguagePath(), '*/**');
+            $this->copy($this->srcPath . '/languages', $this->getJAdminLanguagePath(), '*/**');
         }
     }
 }
