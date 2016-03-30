@@ -118,9 +118,9 @@ abstract class JCopyTask extends Task
     }
     
     /**
-     * If true of 1 de destinations folders will be removed before copying 
+     * If true destination folders will be removed before copying
      * 
-     * @param boolean $mustClean If true, will clear content of destination directory
+     * @param boolean $mustClean true to clear content of destination directory
      *
      * @return void 
      */
@@ -304,7 +304,6 @@ abstract class JCopyTask extends Task
      */
     protected function copy($from, $to, $includes, $excludes = '')
     {
-
         $fromPF = new PhingFile($from);
         $toPF = new PhingFile($to);
         $fs = new FileSet();

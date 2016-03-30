@@ -43,7 +43,12 @@ require_once 'JCopyTask.php';
  */
 class JCopyPluginTask extends JCopyTask
 {
-    private $pluginType;
+    /**
+     * Plugin type
+     * 
+     * @var string
+     */
+    protected $pluginType;
 
     /**
      * Sets the plugin type
