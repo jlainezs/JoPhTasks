@@ -4,7 +4,7 @@
   "keywords": ["phing","joomla"],
   "homepage": "http://www.econceptes.com",
   "minimum-stability": "stable",
-  "license": "LGPL 3.0",
+  "license": "LGPL-3.0",
   "authors": [
     {
       "name": "Pep Lainez",
