@@ -44,13 +44,14 @@ class CopyPluginTest extends BaseExtensionTask
         $this->configureProject(PHING_TEST_BASE . "/etc/tasks/CopyPluginTaskTest.xml");
         parent::setUp();
     }
-    
+
     /**
      * Test the plugin site copy
      * 
      * @covers JCopyPluginTask::main
      * @covers JCopyTask::getJSitePluginsDir
      * @covers JCopyPluginTask::getPluginAndGroupPath
+     * @covers JCopyPluginTask::setPluginType
      *
      * @return void
      */
@@ -80,6 +81,7 @@ class CopyPluginTest extends BaseExtensionTask
      *
      * @covers            JCopyPluginTask::main
      * @covers            JCopyPluginTask::validateAttributes
+     * @covers            JCopyPluginTask::setPluginType
      * @expectedException BuildException
      *
      * @return void 
@@ -92,8 +94,9 @@ class CopyPluginTest extends BaseExtensionTask
     /**
      * Test that plugin src directory misses the group or the plugin name 
      *
-     * @covers            JCopyPluginTask::main
-     * @covers            JCopyPluginTask::getPluginAndGroupPath
+     * @covers JCopyPluginTask::main
+     * @covers JCopyPluginTask::getPluginAndGroupPath
+     *
      * @expectedException BuildException
      *
      * @return void 
