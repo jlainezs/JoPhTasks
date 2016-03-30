@@ -28,5 +28,5 @@ Add ```"econceptes/joomla-phing-tasks" : ">=1.0.1beta"``` to your project compos
 The ```build.xml``` file on the ```simple-project``` directory is a good example to get an idea of how to use those tasks.
 The most important part is the ```<includepath>``` and ```<taskdef>``` tags which allows to 'plug' the custom tasks into Phing.
 Don't forget to adjust the path of ```<includepath>``` on your project phing build file to match your settings. Usually
-the package is installed under ```vendor/econceptes/joomla-jphing-tasks```
+the package is installed under ```vendor/econceptes/joomla-phing-tasks```
 Now, take a closer look to the targets defined in the project.
