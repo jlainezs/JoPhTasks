@@ -49,6 +49,7 @@ class CopyExtensionTaskExceptionsTest extends BaseExtensionTask
      * Test that an exception is raised when no joomla root is specified
      * 
      * @covers            JCopyModuleTask::main
+     * @covers            JCopyTask::validateAttributes
      * @expectedException BuildException
      *
      * @return void
@@ -62,6 +63,7 @@ class CopyExtensionTaskExceptionsTest extends BaseExtensionTask
      * Test that an exception is raised when no origin path is speficied
      * 
      * @covers            JCopyModuleTask::main
+     * @covers            JCopyTask::validateAttributes
      * @expectedException BuildException
      *
      * @return void

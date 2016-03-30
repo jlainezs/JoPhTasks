@@ -50,6 +50,7 @@ class CopyTemplateTest extends BaseExtensionTask
      *
      * @covers JCopyTemplateTask::main
      * @covers JCopyTemplateTask::getJTemplatePath
+     * @covers JCopyTask::getJSiteTemplatesPath
      *
      * @return void
      */
@@ -77,6 +78,7 @@ class CopyTemplateTest extends BaseExtensionTask
      *
      * @covers JCopyTemplateTask::main
      * @covers JCopyTemplateTask::getJTemplatePath
+     * @covers JCopyTask::getJAdminTemplatesPath
      *
      * @return void
      */
