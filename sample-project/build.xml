@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
 <!--
-	Phing buildfile
+	Phing sample buildfile
 -->
 <project name="PhingJoomlaTasks" basedir="." default="CopyTest">
     <!-- define the custom tasks -->
@@ -10,10 +10,6 @@
     <taskdef name="jcopyplugin" classname="JCopyPluginTask" />
     <taskdef name="jcopymodule" classname="JCopyModuleTask" />
     <taskdef name="jcopytemplate" classname="JCopyTemplateTask" />
-
-    <!--
-            global properties
-    -->
 
     <!-- Points to joomla root. Pls. note the ending / -->
     <property name="site.dir" value = "www/" />
