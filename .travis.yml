@@ -13,4 +13,5 @@ matrix:
 install:
   - composer require phing/phing:2.14.0
 
+# this is a comment
 phpunit
