@@ -27,6 +27,20 @@
                      toAdmin="false" purge="false" />
     </target>
 
+    <target name="testCopyTemplatePurgeDisabled">
+        <!-- copy a file to the module folder -->
+        <copy file="${origin.dir}/components/com_test/administrator/controller.php" tofile="${site.templates.dir}/tsttemplate/not_deleted.php"/>
+        <jcopytemplate joomlaroot="${site.dir}" SourcePath="${origin.dir}/templates/tsttemplate"
+                       toAdmin="false" purge="false" />
+    </target>
+
+    <target name="testCopyTemplatePurgeEnabled">
+        <!-- copy a file to the module folder -->
+        <copy file="${origin.dir}/components/com_test/administrator/controller.php" tofile="${site.templates.dir}/tsttemplate/should_be_deleted.php"/>
+        <jcopytemplate joomlaroot="${site.dir}" SourcePath="${origin.dir}/templates/tsttemplate"
+                       toAdmin="false" purge="true" />
+    </target>
+
     <target name="testCopyTemplateToAdministrator">
         <jcopytemplate joomlaroot="${site.dir}" SourcePath="${origin.dir}/templates/tsttemplate"
                      toAdmin="true" purge="false" />

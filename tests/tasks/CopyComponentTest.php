@@ -96,4 +96,32 @@ class CopyComponentTest extends BaseExtensionTask
         $this->assertFileExists($languagePath . '/ca-ES.com_test.sys.ini');
         $this->assertFileExists($languagePath . '/ca-ES.com_test.ini');
     }
+
+    /**
+     * Test for purge function on a component
+     *
+     * @covers JCopyTask::purge
+     *
+     * @return void
+     */
+    public function testCopyComponentPurgeDisabled()
+    {
+        $componentPath = $this->getSampleWwwPath() . '/components/com_test';
+        $this->executeTarget(__FUNCTION__);
+        $this->assertFileExists($componentPath . '/not_deleted.php');
+    }
+
+    /**
+     * Test for purge function on a component
+     *
+     * @covers JCopyTask::purge
+     *
+     * @return void
+     */
+    public function testCopyComponentPurgeEnabled()
+    {
+        $componentPath = $this->getSampleWwwPath() . '/components/com_test';
+        $this->executeTarget(__FUNCTION__);
+        $this->assertFileNotExists($componentPath . '/should_be_deleted.php');
+    }
 }

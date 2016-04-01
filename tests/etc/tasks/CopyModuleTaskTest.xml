@@ -35,5 +35,19 @@
                      toAdmin="true" purge="false" />
     </target>
 
+    <target name="testCopyModuleToSitePurgeDisabled">
+        <!-- copy a file to the module folder -->
+        <copy file="${origin.dir}/components/com_test/administrator/controller.php" tofile="${site.modules.dir}mod_test/not_deleted.php"/>
+        <jcopymodule joomlaroot="${site.dir}" SourcePath="${origin.dir}/modules/mod_test"
+                     toAdmin="false" purge="false" />
+    </target>
+
+    <target name="testCopyModuleToSitePurgeEnabled">
+        <!-- copy a file to the module folder -->
+        <copy file="${origin.dir}/components/com_test/administrator/controller.php" tofile="${site.modules.dir}mod_test/should_be_deleted.php"/>
+        <jcopymodule joomlaroot="${site.dir}" SourcePath="${origin.dir}/modules/mod_test"
+                     toAdmin="false" purge="true" />
+    </target>
+
     <target name="main"/>
 </project>

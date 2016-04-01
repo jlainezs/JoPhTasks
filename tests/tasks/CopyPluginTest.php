@@ -77,6 +77,28 @@ class CopyPluginTest extends BaseExtensionTask
     }
 
     /**
+     * Test copy plugin with purge enabled
+     *
+     * @return void
+     */
+    public function testCopyPluginPurgeEnabled()
+    {
+        $this->executeTarget(__FUNCTION__);
+        $this->assertFileNotExists($pluginPath = $this->getSampleWwwPath() . '/plugins/content/testplugin/should_be_deleted.php');
+    }
+
+    /**
+     * Test copy plugin with purge disabled
+     *
+     * @return void
+     */
+    public function testCopyPluginPurgeDisabled()
+    {
+        $this->executeTarget(__FUNCTION__);
+        $this->assertFileNotExists($pluginPath = $this->getSampleWwwPath() . '/plugins/content/testplugin/not_deleted.php');
+    }
+
+    /**
      * Test that a no plugin exception is raised
      *
      * @covers            JCopyPluginTask::main

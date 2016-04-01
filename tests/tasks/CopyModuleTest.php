@@ -104,4 +104,30 @@ class CopyModuleTest extends BaseExtensionTask
         // Does language files exists?
         $this->assertFileExists($languagePath . '/ca-ES.mod_test.sys.ini');
     }
+
+    /**
+     * Test the module copy with copy disabled
+     * 
+     * @covers JCopyModuleTask::purge
+     * 
+     * @return void
+     */
+    public function testCopyModuleToSitePurgeDisabled()
+    {
+        $this->executeTarget(__FUNCTION__);
+        $this->assertFileExists($this->getSampleWwwPath() . '/modules/mod_test/not_deleted.php');
+    }
+
+    /**
+     * Test the module copy with copy enabled
+     *
+     * @covers JCopyModuleTask::purge 
+     * 
+     * @return void
+     */
+    public function testCopyModuleToSitePurgeEnabled()
+    {
+        $this->executeTarget(__FUNCTION__);
+        $this->assertFileNotExists($this->getSampleWwwPath() . '/modules/mod_test/should_be_deleted.php');
+    }
 }

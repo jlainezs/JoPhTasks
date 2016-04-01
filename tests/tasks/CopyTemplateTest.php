@@ -100,4 +100,28 @@ class CopyTemplateTest extends BaseExtensionTask
         $this->assertFileExists($languagePath . '/ca-ES.tpl_tsttemplate.ini');
         $this->assertFileExists($languagePath . '/ca-ES.tpl_tsttemplate.sys.ini');
     }
+
+    /**
+     * Test the template copy with purge disabled
+     *
+     * @return void
+     */
+    public function testCopyTemplatePurgeDisabled()
+    {
+        $this->executeTarget(__FUNCTION__);
+        $templatePath = $this->getSampleWwwPath() . '/templates/tsttemplate';
+        $this->assertFileExists($templatePath . '/not_deleted.php');
+    }
+
+    /**
+     * Test the template copy with purge enabled
+     *
+     * @return void
+     */
+    public function testCopyTemplatePurgeEnabled()
+    {
+        $this->executeTarget(__FUNCTION__);
+        $templatePath = $this->getSampleWwwPath() . '/templates/tsttemplate';
+        $this->assertFileNotExists($templatePath . '/should_be_deleted.php');
+    }
 }
