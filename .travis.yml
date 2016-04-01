@@ -11,7 +11,7 @@ matrix:
     - php: hhvm
 
 install:
+  - composer install --dev
   - composer require phing/phing:2.14.0
-
-# this is a comment
-phpunit
+before_script: cd tests
+script: phpunit
