@@ -62,8 +62,8 @@ class CopyPluginTest extends BaseExtensionTask
         $this->assertInLogs("Copying 2 files");
         $this->assertInLogs("Created 3 empty directories in");
         $this->assertInLogs("Copying 4 files to");
-        $this->assertInLogs("Created 2 empty directories in");
-        $this->assertInLogs("Copying 1 file to");
+        $this->assertInLogs("Created 4 empty directories in");
+        $this->assertInLogs("Copying 3 files to");
         $pluginPath = $this->getSampleWwwPath() . '/plugins/content/testplugin';
         $languagePath = $this->getSampleAdminPath() . '/language/ca-ES';
         // Does the module dir exists?

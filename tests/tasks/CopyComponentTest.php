@@ -66,7 +66,7 @@ class CopyComponentTest extends BaseExtensionTask
         $this->assertInLogs("Created 3 empty directories in");
         $this->assertInLogs("Copying 4 files to");
         $this->assertInLogs("Created 4 empty directories in");
-        $this->assertInLogs("Copying 2 files to");
+        $this->assertInLogs("Copying 3 files to");
 
         // ******* test files in site *****************
         $componentPath = $this->getSampleWwwPath() . '/components/com_test';
@@ -86,7 +86,7 @@ class CopyComponentTest extends BaseExtensionTask
         $languagePath = $this->getSampleAdminPath() . '/language/ca-ES';
         // Does the module dir exists?
         $this->assertTrue(is_dir($componentPath));
-        // Does the main module file exists?
+        // Does the main component files exists?
         $this->assertFileExists($componentPath . '/test.php');
         $this->assertFileExists($componentPath . '/access.xml');
         $this->assertFileExists($componentPath . '/config.xml');

@@ -1,5 +1,7 @@
 # JoPh Tasks
 
+[![Build Status](https://travis-ci.org/jlainezs/JoPhTasks.svg?branch=master)](https://travis-ci.org/jlainezs/JoPhTasks)
+
 This is a set of phing tasks which helps me to develop Joomla! extensions by shortening the phing targets definition
 for copying an extension.
 
