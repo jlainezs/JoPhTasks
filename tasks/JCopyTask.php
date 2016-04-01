@@ -126,11 +126,13 @@ abstract class JCopyTask extends Task
      */
     public function setPurge($mustClean)
     {
-        if ($mustClean) {
-            $this->mustPurge = true;
-        } else {
+        if ($mustClean === false) {
             $this->mustPurge = false;
+        } else {
+            $this->mustPurge = true;
         }
+
+        $this->log($mustClean ? 'Purge enabled' : 'Purge disabled');
     }
 
     /**
@@ -304,6 +306,11 @@ abstract class JCopyTask extends Task
      */
     protected function copy($from, $to, $includes, $excludes = '')
     {
+        // purges EXCEPT from language directories. 
+        if (($this->mustPurge) && ($to != $this->getJSiteLanguagePath()) && ($to != $this->getJAdminLanguagePath())) {
+            $this->purge($to);
+        }
+        
         $fromPF = new PhingFile($from);
         $toPF = new PhingFile($to);
         $fs = new FileSet();
@@ -333,6 +340,7 @@ abstract class JCopyTask extends Task
      */
     protected function purge($fso, $includes = '*/**', $excludes = '')
     {
+        $this->log('Purging ' . $fso);
         $directory = new PhingFile($fso);
         $delete = new DeleteTask();
         $delete->setProject($this->getProject());

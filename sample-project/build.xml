@@ -57,9 +57,9 @@
 
     <target name="CopyModules">
         <jcopymodule joomlaroot="${site.dir}" SourcePath="src/modules/mod_test"
-                     toAdmin="false" purge="false" />
+                     toAdmin="false"/>
         <jcopymodule joomlaroot="${site.dir}" SourcePath="src/modules/mod_test"
-                     toAdmin="true" purge="false" />
+                     toAdmin="true" />
     </target>
 
     <target name="CopyPlugins">
