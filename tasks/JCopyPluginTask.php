@@ -114,6 +114,10 @@ class JCopyPluginTask extends JCopyTask
             $this->copy($this->srcPath . '/languages', $this->getJAdminLanguagePath(), '*/**');
         }
 
+        if (file_exists($this->srcPath . '/language')) {
+            $this->copy($this->srcPath . '/language', $this->getJAdminLanguagePath(), '*/**');
+        }
+
         if (file_exists($this->srcPath . '/media')) {
             $this->extensionName = 'plg_' . str_replace('/', '_', $this->getPluginAndGroupPath());
             

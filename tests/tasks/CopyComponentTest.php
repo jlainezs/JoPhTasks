@@ -59,10 +59,9 @@ class CopyComponentTest extends BaseExtensionTask
     public function testCopyComponent()
     {
         $this->executeTarget(__FUNCTION__);
-        $this->assertInLogs("Copying 15 files to");
+        $this->assertInLogs("Copying 19 files to");
         $this->assertInLogs("Created 3 empty directories in");
         $this->assertInLogs("Copying 4 files to");
-        $this->assertInLogs("Copying 9 files to");
         $this->assertInLogs("Created 3 empty directories in");
         $this->assertInLogs("Copying 4 files to");
         $this->assertInLogs("Created 4 empty directories in");
@@ -77,9 +76,12 @@ class CopyComponentTest extends BaseExtensionTask
         $this->assertFileExists($componentPath . '/controller.php');
         $this->assertFileExists($componentPath . '/index.html');
         $this->assertFileExists($componentPath . '/test.php');
-        // Does language files exists?
+        // Does language files exists? (when copied from languages folder)
         $this->assertFileExists($languagePath . '/ca-ES.com_test.sys.ini');
         $this->assertFileExists($languagePath . '/ca-ES.com_test.ini');
+        // Does language files exists? (when copied from language folder)
+        $this->assertFileExists($languagePath . '/ca-ES.com_test2.sys.ini');
+        $this->assertFileExists($languagePath . '/ca-ES.com_test2.ini');
 
         // ******* test files in administrator *****************
         $componentPath = $this->getSampleAdminPath() . '/components/com_test';
@@ -92,9 +94,12 @@ class CopyComponentTest extends BaseExtensionTask
         $this->assertFileExists($componentPath . '/config.xml');
         $this->assertFileExists($componentPath . '/controller.php');
         $this->assertFileExists($componentPath . '/index.html');
-        // Does language files exists?
+        // Does language files exists? (when copied from languages)
         $this->assertFileExists($languagePath . '/ca-ES.com_test.sys.ini');
         $this->assertFileExists($languagePath . '/ca-ES.com_test.ini');
+        // Does language files exists? (when copied from language)
+        $this->assertFileExists($languagePath . '/ca-ES.com_test2.sys.ini');
+        $this->assertFileExists($languagePath . '/ca-ES.com_test2.ini');
     }
 
     /**

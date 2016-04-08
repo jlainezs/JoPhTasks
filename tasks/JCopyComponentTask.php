@@ -91,12 +91,19 @@ class JCopyComponentTask extends JCopyTask
         if (file_exists($this->srcPath . '/administrator/languages')) {
             $this->copy($this->srcPath . '/administrator/languages', $this->getJAdminLanguagePath(), '*/**');
         }
+        
+        if (file_exists($this->srcPath . '/administrator/language')) {
+            $this->copy($this->srcPath . '/administrator/language', $this->getJAdminLanguagePath(), '*/**');
+        }
 
         // site
         $this->copy($this->srcPath . '/site', $this->getJSiteComponentPath(), '*/**', 'languages/**');
 
         if (file_exists($this->srcPath . '/site/languages')) {
             $this->copy($this->srcPath . '/site/languages', $this->getJSiteLanguagePath(), '*/**');
+        }
+        if (file_exists($this->srcPath . '/site/language')) {
+            $this->copy($this->srcPath . '/site/language', $this->getJSiteLanguagePath(), '*/**');
         }
 
         // media
