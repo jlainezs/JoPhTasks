@@ -31,3 +31,7 @@ The ```build.xml``` file on the ```simple-project``` directory is a good example
 The most important part is the ```<includepath>``` and ```<taskdef>``` tags which allows to 'plug' the custom tasks into Phing.
 Don't forget to adjust the path of ```<includepath>``` on your project phing build file to match your settings. Usually
 the package is installed under ```vendor/econceptes/joomla-phing-tasks``` (tasks are inside the folder ```tasks```).
+
+## Change log
+
+* v1.0.5beta: extensions language folder can be written un plural (languages) or singular (language)
