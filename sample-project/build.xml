@@ -10,6 +10,7 @@
     <taskdef name="jcopyplugin" classname="JCopyPluginTask" />
     <taskdef name="jcopymodule" classname="JCopyModuleTask" />
     <taskdef name="jcopytemplate" classname="JCopyTemplateTask" />
+    <taskdef name="jcopycli" classname="JCopyCliTask" />
 
     <!-- Points to joomla root. Pls. note the ending / -->
     <property name="site.dir" value = "www/" />
@@ -71,5 +72,9 @@
         <jcopytemplate joomlaroot="${site.dir}" SourcePath="src/templates/tsttemplate" toAdmin="true" purge="true" />
     </target>
 
-    <target name="copyall" depends="cleanTest,CopyComponents,CopyModules,CopyPlugins,CopyTemplates" />
+    <target name="CopyCli">
+        <jcopycli joomlaroot="${site.dir}" SourcePath="src/cli" />
+    </target>
+
+    <target name="copyall" depends="cleanTest,CopyComponents,CopyModules,CopyPlugins,CopyTemplates,CopyCli" />
 </project>

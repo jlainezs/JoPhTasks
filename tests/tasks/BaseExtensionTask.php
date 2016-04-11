@@ -64,6 +64,16 @@ class BaseExtensionTask extends BuildFileTest
     }
 
     /**
+     * Gets the sample CLI directory
+     * 
+     * @return string
+     */
+    public function getCliPath()
+    {
+        return realpath($this->project->getProperty('cli.dir'));
+    }
+
+    /**
      * Gets the sample administrator directory
      *
      * @return string Path to the sample administrator dir

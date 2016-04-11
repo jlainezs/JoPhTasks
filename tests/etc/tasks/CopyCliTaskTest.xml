@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CopyTemplateTaskTest" default="main">
+    <includepath classpath="../../../tasks" />
+    <taskdef name="jcopycli" classname="JCopyCliTask" />
+
+    <property file="tasks.properties"/>
+
+    <target name="setup"/>
+
+    <target name="clean" description="Cleans the destination folders">
+        <delete dir="${site.templates.dir}tsttemplate">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${admin.templates.dir}tsttemplate">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${admin.language.dir}">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${media.dir}">
+            <fileset includes="*/**" />
+        </delete>
+        <delete dir="${cli.dir}">
+            <fileset includes="*/**" />
+        </delete>
+    </target>
+
+    <target name="testCopyCli">
+        <jcopycli joomlaroot="${site.dir}" SourcePath="${origin.dir}/cli" />
+    </target>
+
+    <target name="main"/>
+</project>
