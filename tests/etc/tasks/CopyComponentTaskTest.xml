@@ -30,7 +30,7 @@
     </target>
 
     <target name="testCopyComponentPurgeDisabled">
-        <!-- copy a file to the component admin folder -->
+        <!-- copy a file to the component admin folder to check later it is not deleted -->
         <copy file="${origin.dir}/components/com_test/administrator/controller.php" tofile="${site.components.dir}com_test/not_deleted.php"/>
         <jcopycomponent joomlaroot="${site.dir}" SourcePath="${origin.dir}/components/com_test" purge="false" />
     </target>

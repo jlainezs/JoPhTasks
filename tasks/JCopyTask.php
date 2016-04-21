@@ -354,6 +354,8 @@ abstract class JCopyTask extends Task
         
         $delete->addFileSet($fs);        
         $delete->main();
+        
+        $this->log('Purged ' . $fso);
     }
 
     /**

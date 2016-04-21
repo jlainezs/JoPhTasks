@@ -84,9 +84,13 @@ class JCopyComponentTask extends JCopyTask
     public function main()
     {
         $this->validateAttributes();
+        $purge = $this->mustPurge;
 
         // administrator
         $this->copy($this->srcPath . '/administrator', $this->getJAdminComponentPath(), '*/**', 'languages/**');
+        $this->mustPurge = false;
+        $this->copy($this->srcPath, $this->getJAdminComponentPath(), '*.xml');
+        $this->mustPurge = $purge;
 
         if (file_exists($this->srcPath . '/administrator/languages')) {
             $this->copy($this->srcPath . '/administrator/languages', $this->getJAdminLanguagePath(), '*/**');

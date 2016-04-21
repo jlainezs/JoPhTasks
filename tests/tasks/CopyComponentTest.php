@@ -89,8 +89,14 @@ class CopyComponentTest extends BaseExtensionTask
         // Does the module dir exists?
         $this->assertTrue(is_dir($componentPath));
         // Does the main component files exists?
+
+        if (!file_exists($componentPath . '/test.php')) {
+            die();
+        }
+
         $this->assertFileExists($componentPath . '/test.php');
         $this->assertFileExists($componentPath . '/access.xml');
+        $this->assertFileExists($componentPath . '/install.xml');
         $this->assertFileExists($componentPath . '/config.xml');
         $this->assertFileExists($componentPath . '/controller.php');
         $this->assertFileExists($componentPath . '/index.html');
